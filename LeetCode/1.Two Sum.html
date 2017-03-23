@@ -6,25 +6,31 @@
   </head>
   <body>
     <script type="text/javascript">
-    // Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-    // You may assume that each input would have exactly one solution, and you may not use the same element twice.
-    // Example:
-    // Given nums = [2, 7, 11, 15], target = 9,
-    // Because nums[0] + nums[1] = 2 + 7 = 9,
-    // return [0, 1]
-    // 传递一个整数数组和 target，返回数组中两个值相加等于 target 的下标 index 组成的数组
+    /** Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+      * You may assume that each input would have exactly one solution, and you may not use the same element twice.
+      * Example:
+      * Given nums = [2, 7, 11, 15], target = 9,
+      * Because nums[0] + nums[1] = 2 + 7 = 9,
+      * return [0, 1]
+      */
+
+    /**
+      * 传递一个整数数组和 target，返回数组中两个值相加等于 target 的下标 index 组成的数组
+      * 难度: easy 通过率: 31.8%
+      */
 
     /**
      * @param {number[]} nums
      * @param {number} target
      * @return {number[]}
      */
+
     var twoSum = function(nums, target) {
         var remain
         var result
         for(var i = 0, length = nums.length; i < length; i++) {
             remain = target - nums[i]
-            if(!result) {
+            if(result === void 0) {
               for(var j = 0; j < nums.length; j++) {
                   if(i === j) continue
                   if(remain === nums[j]) {
@@ -32,7 +38,9 @@
                     break
                   }
               }
-            } else break
+            } else {
+              break
+            }
 
         }
         result = result === void 0 ? -1 : result
