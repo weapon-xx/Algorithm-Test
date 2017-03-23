@@ -11,7 +11,8 @@
     // Example:
     // Given nums = [2, 7, 11, 15], target = 9,
     // Because nums[0] + nums[1] = 2 + 7 = 9,
-    // return [0, 1].
+    // return [0, 1]
+    // 传递一个整数数组和 target，返回数组中两个值相加等于 target 的下标 index 组成的数组
 
     /**
      * @param {number[]} nums
@@ -20,22 +21,21 @@
      */
     var twoSum = function(nums, target) {
         var remain
-        var result = []
+        var result
         for(var i = 0, length = nums.length; i < length; i++) {
             remain = target - nums[i]
-            if(result.length === 0) {
+            if(!result) {
               for(var j = 0; j < nums.length; j++) {
                   if(i === j) continue
                   if(remain === nums[j]) {
-                    result.push(i)
-                    result.push(j)
+                    result = [i].concat([j])
                     break
                   }
               }
             } else break
 
         }
-        result = result.length === 0 ? -1 : result
+        result = result === void 0 ? -1 : result
         return result
     };
 
