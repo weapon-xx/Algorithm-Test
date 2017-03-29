@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    /**
+      * @param {string} s
+      * @param {string} p
+      * @return {boolean}
+      */
+      var isMatch = function(s, p) {
+        p = p.replace(/[A-Za-z]/g, (match) => {
+          return `[${match}]`
+        })
+        var reg = new RegExp(p, 'g')
+        return reg.test(s)
+      };
+
+      console.log(isMatch('aaa', 'a'));
+    </script>
+  </body>
+</html>
