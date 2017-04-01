@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /**
+        * Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0?
+        * Find all unique triplets in the array which gives the sum of zero.
+        *
+        *
+        *
+        */
+
+        /**
+         * @param {number[]} nums
+         * @return {number[][]}
+         */
+        var threeSum = function(nums) {
+          var arr = []
+          nums.forEach(function(value) {
+            if(arr.indexOf(value) === -1) {
+              arr.push(value)
+            }
+          })
+
+          var combinArr = []
+          for(var i = 0; i < arr.length; i++) {
+            for(var j = i + 1; j < arr.length; j++) {
+              combinArr.push([arr[i]].concat([arr[j]]))
+            }
+          }
+
+          console.log(combinArr);
+
+          var result = []
+          combinArr.forEach(function(value) {
+            var sum = parseInt(value[0]) + parseInt(value[1])
+            for(var i = 0; i < arr.length; i++) {
+              if(sum + parseInt(arr[i]) === 0) {
+                value.push(arr[i])
+                result.push(value)
+              }
+            }
+          })
+
+          return result
+        };
+
+
+        console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+    </script>
+  </body>
+</html>
