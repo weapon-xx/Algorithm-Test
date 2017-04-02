@@ -10,7 +10,7 @@
         * Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0?
         * Find all unique triplets in the array which gives the sum of zero.
         *
-        *
+        * 难度: Medium 通过率: 	21.4%
         *
         */
 
@@ -19,36 +19,34 @@
          * @return {number[][]}
          */
         var threeSum = function(nums) {
-          var obj = {}
-          nums.forEach(function(value) {
-            if(obj[value] != void 0) {
-              obj[value] += 1;
-            } else {
-              obj[value] = 1;
-            }
+          nums = nums.sort(function(x, y) {
+            return x - y
           })
 
-
-          var combinArr = []
-          for(var i = 0; i < nums.length; i++) {
-            for(var j = i + 1; j < nums.length; j++) {
-              combinArr.push([nums[i]].concat([nums[j]]))
-            }
-          }
-
-          // console.log(combinArr);
-
+          // nums = [-4, -1, -1, 0, 1, 2]
           var result = []
-          combinArr.forEach(function(value) {
-            var sum = parseInt(value[0]) + parseInt(value[1])
-            for(var i = 0; i < nums.length; i++) {
-              if(sum + parseInt(nums[i]) === 0 && obj[nums[i]] !== 1) {
-                value.push(nums[i])
-                result.push(value)
-                obj[nums[i]]--
+
+          for(var i = 0; i < nums.length - 2; i++) {
+            // 排除重复数字
+            if(i === 0 || (i > 0 && nums[i] !== nums[i-1])) {
+              var start = i + 1;
+              var end = nums.length - 1;
+              var sum = 0 - nums[i];
+              while(start < end) {
+                if(nums[start] + nums[end] === sum) {
+                  result.push([nums[i], nums[start], nums[end]])
+                  while(start < end && nums[start] === nums[start + 1]) start++;
+                  while(start < end && nums[end] === nums[end + 1]) end--;
+                  start++;
+                  end--;
+                } else if(nums[start] + nums[end] < sum) {
+                  start++;
+                } else {
+                  end--;
+                }
               }
             }
-          })
+          }
 
           return result
         };
