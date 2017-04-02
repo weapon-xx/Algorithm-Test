@@ -19,29 +19,33 @@
          * @return {number[][]}
          */
         var threeSum = function(nums) {
-          var arr = []
+          var obj = {}
           nums.forEach(function(value) {
-            if(arr.indexOf(value) === -1) {
-              arr.push(value)
+            if(obj[value] != void 0) {
+              obj[value] += 1;
+            } else {
+              obj[value] = 1;
             }
           })
 
+
           var combinArr = []
-          for(var i = 0; i < arr.length; i++) {
-            for(var j = i + 1; j < arr.length; j++) {
-              combinArr.push([arr[i]].concat([arr[j]]))
+          for(var i = 0; i < nums.length; i++) {
+            for(var j = i + 1; j < nums.length; j++) {
+              combinArr.push([nums[i]].concat([nums[j]]))
             }
           }
 
-          console.log(combinArr);
+          // console.log(combinArr);
 
           var result = []
           combinArr.forEach(function(value) {
             var sum = parseInt(value[0]) + parseInt(value[1])
-            for(var i = 0; i < arr.length; i++) {
-              if(sum + parseInt(arr[i]) === 0) {
-                value.push(arr[i])
+            for(var i = 0; i < nums.length; i++) {
+              if(sum + parseInt(nums[i]) === 0 && obj[nums[i]] !== 1) {
+                value.push(nums[i])
                 result.push(value)
+                obj[nums[i]]--
               }
             }
           })
