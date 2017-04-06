@@ -24,35 +24,29 @@
        * @return {number}
        */
       var threeSumClosest = function(nums, target) {
-        nums.sort(function(x, y) {
+        var result = nums[0] + nums[1] + nums[nums.length - 1];
+        nums = nums.sort(function(x, y) {
           return x - y
         })
 
-        var result = [];
-
         for(var i = 0; i < nums.length - 2; i++) {
-          if(i === 0 || (i > 0 && nums[i] !== nums[i - 1])) {
-            var start = i + 1;
-            var end = nums.length - 1;
-            var sum = target - nums[i];
-            var cache ;
-            while(start < end) {
-              if(nums[start] + nums[end] === sum) {
-                return target
-              } else if(nums[start] + nums[end] < sum) {
-                cache = nums[start] + nums[end] + nums[i];
-                result.push(cache);
-                start++;
-              } else if(nums[start] + nums[end] > sum) {
-                cache = nums[start] + nums[end] + nums[i];
-                result.push(cache);
-                end--;
-              }
+          var start = i + 1;
+          var end = nums.length - 1;
+          while(start < end) {
+            var sum = nums[i] + nums[start] + nums[end];
+            if(sum > target) {
+              end--;
+            } else if(sum < target) {
+              start++;
+            } else {
+              return target
+            }
+            if(Math.abs(sum - target) < Math.abs(result - target)) {
+              result = sum;
             }
           }
         }
-
-        console.log(result);
+        return result
       };
 
       console.log(threeSumClosest([-1, 2, 1, -4], 1));
