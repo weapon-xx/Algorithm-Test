@@ -13,7 +13,6 @@
 
       var isValid = function(s) {
         var stack = [];
-        debugger
         for(var i = 0; i < s.length; i++) {
           if(s.charAt(i) === '(' || s.charAt(i) === '[' || s.charAt(i) === '{') {
             stack.push(s.charAt(i));
