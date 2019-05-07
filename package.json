@@ -4,7 +4,14 @@
   "description": "Algorithm Test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint **/*.js --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "repository": {
     "type": "git",
@@ -15,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/weapon-xx/Algorithm-Test/issues"
   },
-  "homepage": "https://github.com/weapon-xx/Algorithm-Test#readme"
+  "homepage": "https://github.com/weapon-xx/Algorithm-Test#readme",
+  "devDependencies": {
+    "husky": "^2.2.0"
+  }
 }
