@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <script type="text/javascript">
-    /**
+/**
       *
       * Given an array and a value, remove all instances of that value in place and return the new length.
       * Do not allocate extra space for another array, you must do this in place with constant memory.
@@ -14,21 +6,18 @@
       *
       * 难度: Easy 通过率: 37.9%
       */
-    /**
+/**
       * @param {number[]} nums
       * @param {number} val
       * @return {number}
       */
-      var removeElement = function(nums, val) {
-        nums.forEach(function(num, index) {
-            if(num === val) {
-                nums.splice(index, 1)
-            }
-        })
-        return nums
-      };
+var removeElement = function(nums, val) {
+	nums.forEach(function(num, index) {
+		if(num === val) {
+			nums.splice(index, 1);
+		}
+	});
+	return nums;
+};
 
-      console.log(removeElement([3,2,2,3], 3));
-    </script>
-  </body>
-</html>
+console.log(removeElement([3,2,2,3], 3));
