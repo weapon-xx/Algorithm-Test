@@ -10,13 +10,13 @@
  */
 
 function lengthOfLongestSubstring(s) {
-	var map = {};
-	var left = 0;
-	return s.split('').reduce((max, value, index) => {
-		left = map[value] >= left ? map[value] + 1 : left;
-		map[value] = index;
-		return Math.max(max, index - left + 1);
-	}, 0);
+    const map = {};
+    let left = 0;
+    return s.split('').reduce((max, value, index) => {
+        left = map[value] >= left ? map[value] + 1 : left;
+        map[value] = index;
+        return Math.max(max, index - left + 1);
+    }, 0);
 }
 
 console.log(lengthOfLongestSubstring('abcabcbb'));

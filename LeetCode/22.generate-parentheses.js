@@ -8,22 +8,22 @@
  * @param {number} n
  * @return {string[]}
  */
-var generateParenthesis = function(n) {
-	const res = [];
-	function generate(str = '', left = 0, right = 0) {
-		if (str.length === 2 * n) {
-			res.push(str);
-			return ;
-		}
-		if (left < n) {
-			generate(str + '(', left + 1, right);
-		}
-		if (right < left) {
-			generate(str + ')', left, right + 1);
-		}
-	}
-	generate();
-	return res;
-};
+function generateParenthesis(n) {
+    const res = [];
+    function generate(str = '', left = 0, right = 0) {
+        if (str.length === 2 * n) {
+            res.push(str);
+            return;
+        }
+        if (left < n) {
+            generate(`${str}(`, left + 1, right);
+        }
+        if (right < left) {
+            generate(`${str})`, left, right + 1);
+        }
+    }
+    generate();
+    return res;
+}
 
 console.log(generateParenthesis(3));

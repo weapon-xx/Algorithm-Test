@@ -8,35 +8,41 @@
  * @param {string} digits
  * @return {string[]}
  */
-var letterCombinations = function(digits) {
-	const map = {
-		2: 'abc',
-		3: 'def',
-		4: 'ghi',
-		5: 'jkl',
-		6: 'mno',
-		7: 'pqrs',
-		8: 'tuv',
-		9: 'wxyz',
-	};
-    
-	let result = [];
-    
-	for(const digit of digits) {
-		let temp = [];
-		for(const char of map[digit]) {
-			if(result.length > 0) {
-				for(const res of result) {
-					temp.push(res + char);
-				} 
-			} else {
-				temp.push(char);
-			}
-		}
-		result = temp;
-	}
-	return result;
-};
+function letterCombinations(digits) {
+    const map = {
+        2: 'abc',
+        3: 'def',
+        4: 'ghi',
+        5: 'jkl',
+        6: 'mno',
+        7: 'pqrs',
+        8: 'tuv',
+        9: 'wxyz',
+    };
+
+    let result = [];
+
+    for (let j = 0; j < digits.length; j += 1) {
+        const digit = digits[j];
+        const temp = [];
+        for (let i = 0; i < map[digit]; i += 1) {
+            const char = map[digit][i];
+            if (result.length > 0) {
+                result.forEach((item) => {
+                    temp.push(item + char);
+                });
+            } else {
+                temp.push(char);
+            }
+        }
+
+        result = temp;
+    }
+    return result;
+}
 
 console.log(letterCombinations('234'));
-// ["adg", "bdg", "cdg", "aeg", "beg", "ceg", "afg", "bfg", "cfg", "adh", "bdh", "cdh", "aeh", "beh", "ceh", "afh", "bfh", "cfh", "adi", "bdi", "cdi", "aei", "bei", "cei", "afi", "bfi", "cfi"]
+// ["adg", "bdg", "cdg", "aeg", "beg", "ceg",
+// "afg", "bfg", "cfg", "adh", "bdh", "cdh",
+// "aeh", "beh", "ceh", "afh", "bfh", "cfh",
+// "adi", "bdi", "cdi", "aei", "bei", "cei", "afi", "bfi", "cfi"]

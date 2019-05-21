@@ -10,16 +10,17 @@
 * @param {number} x
 * @return {boolean}
 */
-var isPalindrome = function(x) {
-	if(x<0 || (x != 0 && x % 10 === 0)) {
-		return false;
-	}
-	var rev = 0;
-	while (x>rev){
-		rev = rev*10 + x%10;
-		x = (x * 1000)/10000;
-	}
-	return (x==rev || x==rev/10);
-};
+function isPalindrome(x) {
+    let num = x;
+    if (num < 0 || (num !== 0 && num % 10 === 0)) {
+        return false;
+    }
+    let rev = 0;
+    while (num > rev) {
+        rev = rev * 10 + (num % 10);
+        num = (num * 1000) / 10000;
+    }
+    return (num === rev || num === rev / 10);
+}
 
 console.log(isPalindrome(11));
