@@ -12,6 +12,8 @@
 /**
  * @param {number[]} nums
  * @return {number}
+ * 根据题目分析得出状态方程，并使用动态规划求解
+ *
  */
 function rob(nums) {
     if (nums.length === 0) return 0;
