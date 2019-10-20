@@ -22,15 +22,15 @@ function permuteUnique(nums) {
             const key = arr.toString();
             if (!map[key]) {
                 all.push(arr);
-                map[key] = true;         
+                map[key] = true;
             }
-            return
+            return;
         }
         for (let i = index; i < arr.length; i += 1) {
             const temp = arr.slice();
             [temp[index], temp[i]] = [temp[i], temp[index]];
             back(all, temp, index + 1);
-            [temp[index], temp[i]] = [temp[i], temp[index]];   
+            [temp[index], temp[i]] = [temp[i], temp[index]];
         }
     }
 
@@ -38,4 +38,4 @@ function permuteUnique(nums) {
     return res;
 }
 
-console.log(permuteUnique([1,1,2]));
+console.log(permuteUnique([1, 1, 2]));

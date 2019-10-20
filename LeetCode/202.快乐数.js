@@ -5,7 +5,7 @@
  * 如果可以变为 1，那么这个数就是快乐数。
  * 输入: 19
  * 输出: true
- * 解释: 
+ * 解释:
  * 12 + 92 = 82
  * 82 + 22 = 68
  * 62 + 82 = 100
@@ -18,28 +18,27 @@
  */
 function isHappy(n) {
     function squareSum(num) {
-        let res =  0;
-        while(num > 0) {
-            res += Math.pow(num % 10, 2);
-            num = parseInt(num / 10);
+        let res = 0;
+        while (num > 0) {
+            res += (num % 10) ** 2;
+            num = parseInt(num / 10, 10);
         }
         return res;
     }
-    
+
     const map = {};
     let slow = n;
     let fast = squareSum(slow);
     map[slow] = true;
-    while(slow !== fast) {
+    while (slow !== fast) {
         slow = squareSum(slow);
         fast = squareSum(fast);
         fast = squareSum(fast);
-        if(map[slow]) {
-            console.log(slow)
+        if (map[slow]) {
+            console.log(slow);
             return false;
-        } else {
-            map[slow] = true;
         }
+        map[slow] = true;
     }
     return slow === 1;
 }

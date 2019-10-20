@@ -1,10 +1,8 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
+// Definition for singly-linked list.
+function ListNode(val) {
+    this.val = val;
+    this.next = null;
+}
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
@@ -12,7 +10,7 @@
  */
 function addTwoNumbers(l1, l2) {
     let flag = 0;
-    let newHead = new ListNode();
+    const newHead = new ListNode();
     let prev = newHead;
     while (l1 || l2) {
         const node = new ListNode();
