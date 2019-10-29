@@ -19,11 +19,12 @@ function canJump(nums) {
         if (i > maxDistance) {
             return false;
         }
+        // 计算当前节点的跳跃距离
         const currDistance = i + nums[i];
         if (i !== nums.length - 1 && currDistance >= nums.length - 1) {
             break;
         }
-
+        // 更新最大跳跃距离
         maxDistance = Math.max(maxDistance, currDistance);
     }
     return true;

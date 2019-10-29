@@ -18,9 +18,9 @@
 /**
  * @param {number[]} nums
  * @return {number[][]}
- * 使用回溯算法
  */
 function subsets(nums) {
+    // 所有求所有集合的题目，都可以马上联想到使用回溯算法
     const res = [];
     function backTrack(all, arr, index, tmp) {
         res.push(tmp);

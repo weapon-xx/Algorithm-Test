@@ -26,26 +26,25 @@ function TreeNode(val) {
 }
 function invertTree(root) {
     if (!root) return root;
-    const newTree = new TreeNode();
-    newTree.val = root.val;
-    function reverse(oldNode, newNode) {
-        if (oldNode.right) {
-            newNode.left = new TreeNode();
-            newNode.left.val = oldNode.right.val;
-            if (oldNode.right.left || oldNode.right.right) {
-                reverse(oldNode.right, newNode.left);
-            }
-        }
+    const newTree = new TreeNode(root.val);
+
+    function swap(oldNode, newNode) {
         if (oldNode.left) {
-            newNode.right = new TreeNode();
-            newNode.right.val = oldNode.left.val;
+            newNode.right = new TreeNode(oldNode.left.val);
             if (oldNode.left.left || oldNode.left.right) {
-                reverse(oldNode.left, newNode.right);
+                swap(oldNode.left, newNode.right);
             }
         }
-        return newNode;
+        if (oldNode.right) {
+            newNode.left = new TreeNode(oldNode.right.val);
+            if (oldNode.right.left || oldNode.right.right) {
+                swap(oldNode.right, newNode.left);
+            }
+        }
     }
-    return reverse(root, newTree);
+
+    swap(root, newTree);
+    return newTree;
 }
 
 invertTree();

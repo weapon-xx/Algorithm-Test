@@ -9,7 +9,7 @@ function longestCommonPrefix(strs) {
     if (strs.length === 0) {
         return '';
     }
-    // 将 0 下边最为初始最大前缀
+    // 将第一个字符串作为前缀
     let prefix = strs[0];
     for (let i = 1; i < strs.length; i += 1) {
         while (strs[i].indexOf(prefix) !== 0) {

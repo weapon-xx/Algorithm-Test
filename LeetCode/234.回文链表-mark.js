@@ -19,34 +19,31 @@
  * @return {boolean}
  */
 function isPalindrome(head) {
-    if (!head || !head.next) {
-        return true;
-    }
+    if (!head || !head.next) return head;
 
-    // 1.快慢指针找出链表中点
-    let fast = head.next.next;
+    // 1.快慢指针找出链表重点
     let slow = head.next;
+    let fast = head.next.next;
     while (fast && fast.next) {
         fast = fast.next.next;
         slow = slow.next;
     }
 
-    let next;
+    // 2.找出中点后，翻转链表的前半部分
     let prev;
-    // 2.翻转链表前半部分
     while (head !== slow) {
-        ({ next } = head);
+        const { next } = head;
         head.next = prev;
         prev = head;
         head = next;
     }
 
-    // 3.假如链表总长度为奇数，则 slow 后移一个节点
+    // 3.快指针非空时，说明链表总个数为奇数，slow 向后移一位
     if (fast) {
         slow = slow.next;
     }
 
-    // 4.回文判断比较
+    // 4.遍历前半部分链表，并进行对比
     while (prev) {
         if (prev.val !== slow.val) {
             return false;
@@ -54,7 +51,6 @@ function isPalindrome(head) {
         prev = prev.next;
         slow = slow.next;
     }
-
     return true;
 }
 

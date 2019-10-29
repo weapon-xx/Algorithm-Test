@@ -19,13 +19,17 @@
  * 也可以使用回溯法，但是超过了 leetCode 时间限制
  */
 function uniquePaths(m, n) {
+    // 思路：动态规划，根据题纲转化状态方程
+    // 1.格子可以想象为一个二维数组
     const map = [];
+    // 2.机器人只能向右、向下移动一步，对于 x、 y 轴边界情况，都是为一
     for (let i = 0; i < n; i += 1) {
         map.push([1]);
     }
     for (let i = 1; i < m; i += 1) {
         map[0].push(1);
     }
+    // 3.假设坐标为 x、y，map[x, y] = map[x - 1][y] + map[x][y - 1]
     for (let x = 1; x < n; x += 1) {
         for (let y = 1; y < m; y += 1) {
             map[x][y] = map[x - 1][y] + map[x][y - 1];

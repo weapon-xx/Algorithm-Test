@@ -28,12 +28,13 @@ function isHappy(n) {
 
     const map = {};
     let slow = n;
-    let fast = squareSum(slow);
+    let fast = squareSum(n);
     map[slow] = true;
     while (slow !== fast) {
         slow = squareSum(slow);
         fast = squareSum(fast);
         fast = squareSum(fast);
+        // 解决循环问题
         if (map[slow]) {
             console.log(slow);
             return false;

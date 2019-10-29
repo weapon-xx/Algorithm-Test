@@ -15,14 +15,16 @@
  * 4.转化成字符串，根据下标直接返回，'189'[2]
  */
 function findNthDigit(n) {
+    // 位数
     let digit = 0;
+    // 数字总个数
     let all = 0;
     while (all < n) {
         digit += 1;
         all += 9 * (10 ** (digit - 1)) * digit;
     }
 
-    const areaDigit = n - all + 9 * (10 ** (digit - 1)) * digit;
+    const areaDigit = (n - all) + 9 * (10 ** (digit - 1)) * digit;
     let num = (areaDigit - 1) / digit;
     const index = (areaDigit - 1) % digit;
     num += 10 ** (digit - 1);

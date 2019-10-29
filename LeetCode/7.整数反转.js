@@ -1,17 +1,16 @@
 /**
-* Reverse digits of an integer.
-* Example1: x = 123, return 321
-* Example2: x = -123, return -321
-*
+ * 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+ * 示例 1:
+ * 输入: 123
+ * 输出: 321
 */
-
 /**
 * @param {number} x
 * @return {number}
 */
 function reverse(x) {
     let num = x;
-    const sign = (num > 0) ? 0 : 1;
+    const sign = (num > 0) ? 1 : -1;
     num = Math.abs(num);
     const str = num.toString().split('').reverse().join('');
     const result = sign * Number(str);

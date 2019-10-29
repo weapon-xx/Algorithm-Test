@@ -9,10 +9,10 @@
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
- * 双指针解法
  */
 function searchRange(nums, target) {
     const res = [-1, -1];
+    // 双指针解法
     for (let i = 0; i < nums.length; i += 1) {
         if (nums[i] === target) {
             res[0] = i;

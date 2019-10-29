@@ -12,14 +12,15 @@
 /**
  * @param {number[]} nums
  * @return {number}
- * 根据题目分析得出状态方程，并使用动态规划求解
- *
  */
 function rob(nums) {
     if (nums.length === 0) return 0;
-    const dp = [];
-    dp[0] = 0;
-    [dp[1]] = [nums[0]];
+    // 思路：
+    // 根据题目分析得出状态方程，并使用动态规划求解
+    // 由于不能选取相邻的房屋，那么当前位置 n 偷盗的最大值为
+    // 要么是 n - 1，要么是 n - 2 再加上当前位置数值
+    // 得出动态规划方程：dp[n] = MAX( dp[n-1], dp[n-2] + num )
+    const dp = [0, nums[0]];
     for (let i = 2; i <= nums.length; i += 1) {
         dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
     }

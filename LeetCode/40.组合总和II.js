@@ -18,10 +18,11 @@
  * @param {number[]} candidates
  * @param {number} target
  * @return {number[][]}
- * 39题的变形，关键地方在于每个数字智能使用一次
+ * 39题的变形，关键地方在于每个数字只能使用一次
  */
 function combinationSum2(candidates, sum) {
     const res = [];
+    // 先对数组进行排序
     candidates = candidates.sort((a, b) => a - b);
 
     function combina(all, arr, start, tmp, target) {
@@ -36,9 +37,11 @@ function combinationSum2(candidates, sum) {
             if (i > start && arr[i] === arr[i - 1]) {
                 continue;
             } else {
+                // 压栈
                 tmp.push(arr[i]);
                 // 将 i 加一后再调用递归
                 combina(all, arr, i + 1, tmp.slice(), target - arr[i]);
+                // 出栈回溯
                 tmp.pop();
             }
         }

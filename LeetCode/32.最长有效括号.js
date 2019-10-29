@@ -19,7 +19,7 @@ function longestValidParentheses(s) {
             stack.push(i);
         } else {
             stack.pop();
-            // 假如栈清空时，仍 push 当前下标
+            // 假如栈清空时，仍 push 当前下标占位
             if (stack.length === 0) {
                 stack.push(i);
             } else {
