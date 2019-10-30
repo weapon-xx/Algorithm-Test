@@ -20,34 +20,25 @@
  * @return {number[][]}
  * 39题的变形，关键地方在于每个数字只能使用一次
  */
-function combinationSum2(candidates, sum) {
+function combinationSum2(candidates, target) {
     const res = [];
-    // 先对数组进行排序
-    candidates = candidates.sort((a, b) => a - b);
-
-    function combina(all, arr, start, tmp, target) {
-        if (target === 0) {
-            all.push(tmp);
+    candidates.sort((a, b) => a - b);
+    function search(arr, num, index, temp) {
+        if (num === 0) {
+            res.push(temp.slice());
             return;
         }
-
-        for (let i = start; i < arr.length && arr[i] <= target; i += 1) {
-            // 判断当前下标 i 是否大于 start，且当前值等于前一个值
-            // 避免数字的重复使用，如 [1, 1, 1]
-            if (i > start && arr[i] === arr[i - 1]) {
+        for (let i = index; i < arr.length && arr[i] <= num; i += 1) {
+            if (i > index && arr[i] === arr[i - 1]) {
                 continue;
-            } else {
-                // 压栈
-                tmp.push(arr[i]);
-                // 将 i 加一后再调用递归
-                combina(all, arr, i + 1, tmp.slice(), target - arr[i]);
-                // 出栈回溯
-                tmp.pop();
             }
+            temp.push(arr[i]);
+            search(arr, num - arr[i], i + 1, temp);
+            temp.pop();
         }
     }
 
-    combina(res, candidates, 0, [], sum);
+    search(candidates, target, 0, []);
     return res;
 }
 

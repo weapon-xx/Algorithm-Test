@@ -22,11 +22,9 @@
  * @return {number}
  */
 function maxDepth(root) {
-    if (!root) {
-        return 0;
-    }
+    if (!root) return 0;
     function deep(node, level) {
-        if (node.val !== null) {
+        if (node) {
             level += 1;
         }
         const left = node.left ? deep(node.left, level) : level;

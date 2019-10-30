@@ -25,6 +25,7 @@ function combinationSum(candidates, target) {
         if (sum === 0) {
             result.push(tmp);
         }
+        // 循环条件加上当前数值要小于剩余数值，减少循环次数
         for (let i = start; i < arr.length && arr[i] <= sum; i += 1) {
             tmp.push(arr[i]); // 压栈
             combin(result, arr, sum - arr[i], i, tmp.slice()); // 递归

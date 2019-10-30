@@ -16,21 +16,18 @@
  * @return {number[][]}
  */
 function levelOrderBottom(root) {
-    if (!root) {
-        return [];
-    }
-    function search(node, obj, level) {
+    const res = [];
+    function search(all, node, level) {
         if (!node) return;
+        if (!res[level]) res[level] = [];
 
-        if (!obj[level]) obj[level] = [];
-
-        obj[level].push(node.val);
-        search(node.left, obj, level + 1);
-        search(node.right, obj, level + 1);
+        res[level].push(node.val);
+        search(all, node.left, level + 1);
+        search(all, node.right, level + 1);
     }
 
-    const map = search(root, {}, 0);
-    return Object.keys(map).map(key => map[key]).reverse();
+    search(res, root, 0);
+    return res.reverse();
 }
 
 console.log(levelOrderBottom());

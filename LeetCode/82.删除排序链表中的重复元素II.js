@@ -22,7 +22,7 @@ function deleteDuplicates(head) {
     newHead.next = head;
     // 新建 prev 变量用于保存先前节点
     let prev;
-    // 新建 curr 变量用于保存当前节点
+    // 新建 curr 变量用于保存当前节点，并且初始化指向 newHead
     let curr = newHead;
 
     while (curr) {

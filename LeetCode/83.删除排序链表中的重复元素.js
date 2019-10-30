@@ -16,19 +16,20 @@
  * @return {ListNode}
  */
 function deleteDuplicates(head) {
-    const map = {};
-    let prev;
     const newHead = head;
+    let prev = null;
     while (head) {
-        if (map[head.val]) {
-            if (prev) {
+        if (prev) {
+            if (prev.val === head.val) {
                 prev.next = head.next;
+            } else {
+                prev = head;
             }
+            head = head.next;
         } else {
-            map[head.val] = true;
             prev = head;
+            head = head.next;
         }
-        head = head.next;
     }
 
     return newHead;

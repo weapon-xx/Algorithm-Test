@@ -67,6 +67,7 @@ var twoSum = function(nums, target) {
 		obj[value] = index;
 	});
 
+	
     for (let i = 0; i < nums.length; i += 1) {
         const value = nums[i];
         var remain = target - value;

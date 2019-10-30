@@ -19,23 +19,18 @@
  */
 function isBalanced(root) {
     if (!root) return true;
-
     function getMaxDepth(node, level) {
-        if (!node) {
-            return level;
-        }
+        if (!node) return level;
 
-        const left = node.left ? getMaxDepth(node.left, level + 1) : level;
-        const right = node.right ? getMaxDepth(node.right, level + 1) : level;
-        if (left === -1 || right === -1) {
-            return -1;
-        }
+        const left = getMaxDepth(node.left, level + 1);
+        const right = getMaxDepth(node.right, level + 1);
+        if (left === -1 || right === -1) return -1;
+
         return Math.abs(left - right) < 2 ? Math.max(left, right) : -1;
     }
-
-    const left = root.left ? getMaxDepth(root.left, 1) : 0;
-    const right = root.right ? getMaxDepth(root.right, 1) : 0;
-    return left !== -1 && right !== -1 ? Math.abs(left - right) < 2 : false;
+    const left = getMaxDepth(root.left, 1);
+    const right = getMaxDepth(root.right, 1);
+    return (left === -1 || right === -1) ? false : Math.abs(left - right) < 2;
 }
 
 console.log(isBalanced());
