@@ -18,7 +18,7 @@ function longestPalindrome(s) {
             left -= 1;
             right += 1;
         }
-        return left - right - 1;
+        return right - left - 1;
     }
 
     let start = 0;
