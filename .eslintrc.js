@@ -38,5 +38,6 @@ module.exports = {
             }
         ],
         "no-continue": 0,
+        "no-bitwise": 1,
     }
 };
