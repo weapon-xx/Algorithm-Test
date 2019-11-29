@@ -1,4 +1,5 @@
 /**
+ * 难度：Medium
  * 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
  * 假设一个二叉搜索树具有如下特征：
  * 节点的左子树只包含小于当前节点的数。
@@ -33,6 +34,7 @@
  * @return {boolean}
  */
 function isValidBST(root) {
+    // 思路：递归解法
     if (root === null) return true;
 
     function dfs(node, min, max) {
